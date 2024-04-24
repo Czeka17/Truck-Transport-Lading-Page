@@ -33,7 +33,7 @@ function Contact() {
 		setParagraph('Proszę czekać')
 		setCanCloseModal(false)
          try{
-			const response = await fetch(`${process.env.EMAIL_STRING}`, {
+			const response = await fetch(`${process.env.REACT_APP_EMAIL_STRING}/baszyn@op.pl`, {
 				method:"POST",
 				headers:{
 					"Content-Type": "application/json"

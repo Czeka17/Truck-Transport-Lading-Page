@@ -1,7 +1,5 @@
-import { FaArrowDown, FaBox, FaStar, FaTruckMoving } from "react-icons/fa";
+import { FaArrowDown } from "react-icons/fa";
 import classes from "./header.module.css";
-import React, { useState, useEffect } from "react";
-import Spline from "@splinetool/react-spline";
 
 function Header() {
 	return (

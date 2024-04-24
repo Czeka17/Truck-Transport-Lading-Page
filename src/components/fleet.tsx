@@ -9,7 +9,7 @@ function Fleet() {
 				<h2 className={classes.title}>FLOTA</h2>
 				<div className={classes.box} data-aos="zoom-in">
 					<div className={classes.imgBox}>
-						<img src='./trucks.jpg' />
+						<img src='./trucks.jpg' alt="Zdjęcie przedstawiające ciężarówke" />
 					</div>
 					<p>
 					Profesjonalna firma transportowa, która zapewnia kompleksowe rozwiązania dostosowane do Twoich potrzeb. Dzięki naszej niezawodnej flocie i doświadczonej załodze, możesz być pewny bezpiecznej i terminowej dostawy Twoich towarów.
@@ -21,7 +21,7 @@ function Fleet() {
 					Naszym celem jest zapewnienie sprawnego i niezawodnego funkcjonowania transportu w ramach naszych własnych operacji. Dążymy do ciągłego doskonalenia naszych procesów logistycznych.
 					</p>
 					<div className={classes.imgBox}>
-						<img src='./truck2.jpg' />
+						<img src='./truck2.jpg' alt="Zdjęcie przedstawiające ciężarówke" />
 					</div>
 				</div>
 			</div>
