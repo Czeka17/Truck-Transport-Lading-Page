@@ -1,0 +1,17 @@
+.footer {
+	padding: 2em;
+	background: rgb(0, 0, 50);
+}
+.footerContent {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
+}
+@media(min-width:576px){
+	.footerContent{
+		flex-direction: row;
+	}
+}

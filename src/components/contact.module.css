@@ -1,0 +1,161 @@
+.Contact {
+	padding: 4em 2em;
+}
+.title {
+	font-size: 2.6rem;
+}
+.con {
+	width: 100%;
+	height: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.ContactBox {
+	width: 100%;
+	height: 100%;
+	background: rgb(0, 0, 75);
+	border: 1px solid white;
+	border-radius: 20px;
+	display: flex;
+	padding: 1em;
+	margin: 1em;
+	flex-direction: column;
+}
+.ContactBox hr {
+	width: 80%;
+}
+.ContactBoxBottom {
+	display: flex;
+	flex-direction: row;
+	padding: 2em 1em;
+}
+
+form {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.formBox {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+}
+.form {
+	display: flex;
+	height: 100%;
+	width: 100%;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.formInputBox{
+	position: relative;
+	padding: 0.5em 0;
+	display: flex;
+	flex-direction: column;
+	
+}
+.form span {
+	position: absolute;
+	left: 0;
+	padding: 10px;
+	pointer-events: none;
+	text-transform: uppercase;
+	transition: 0.5s;
+	color: white;
+}
+.formInputTop{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.formInputBox{
+	margin: 0.5em 1em;
+	width: 100%;
+}
+.formInputBox input, .formInputBox textarea {
+	padding:1em;
+	padding-right: 0;
+	border: 1px solid white;
+	background-color: rgb(0, 0, 120);
+	color: white;
+	outline: none;
+	border-radius: 10px;
+	transition: 0.5s;
+	max-width: 100%;
+	min-width: 100%;
+	resize: none;
+}
+.formInputBox input:valid~span,
+.formInputBox input:focus~span,
+.formInputBox textarea:valid~span,
+ .formInputBox textarea:focus~span{
+                transform: translateX(10px) translateY(-6px);
+                font-size: 0.65em;
+                padding: 0 10px;
+                letter-spacing: 0.2em;
+				color: white;
+				background-color: rgb(0, 0, 120);
+				border-left: 1px solid white;
+				border-right: 1px solid white;
+				
+}
+.formButton {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	padding: 1em;
+	padding-right: 0;
+}
+.formButton button{
+	border-radius: 10px;
+	padding: 1em 2em;
+	background-color: rgb(0, 0, 120);
+	color: white;
+	border: 1px solid white;
+	transition: all 0.3s;
+	cursor: pointer;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.formButton button:hover{
+	background: rgb(0, 0, 90);
+}
+.imgBox {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40%;
+	height: 100%;
+	display: none;
+}
+.imgBox iframe {
+	border: none;
+	width: 100%;
+	height: 100%;
+}
+
+@media(min-width:576px){
+	.formInputTop{
+		flex-direction: row;
+	}
+	.formButton{
+		padding: 0;
+	}
+	
+}
+@media(min-width:768px){
+	.imgBox{
+		display: block;
+	}
+}

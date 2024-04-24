@@ -1,0 +1,65 @@
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    animation: showModal 0.3s linear;
+}
+.backdrop{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+.context{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: rgb(0, 0, 100);
+    z-index: 2;
+    border-radius: 8px;
+}
+.context p{
+    padding: 1em 2em;
+    margin: 1em;
+}
+.closeBtn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1em;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.okBtn{
+    padding: 1em 2em;
+    margin: 1em;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+.okBtn:hover{
+    background-color: rgb(230, 10, 90);;
+}
+.btnDisabled{
+    cursor: wait;
+}
+.btnDisabled:hover{
+    background: rgb(0, 0, 100);
+}
+@keyframes showModal{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
