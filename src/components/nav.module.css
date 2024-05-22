@@ -3,10 +3,10 @@
 	top: 0;
 	width: 100%;
 	z-index: 999;
-	border-radius: 100px;
-	
 }
-
+.desktopNav{
+	display: none;
+}
 .navList {
 	max-width: 1200px;
 	margin: 0 auto;
@@ -39,10 +39,50 @@
 	height: 100%;
 	background: rgb(0, 0, 150);
 	transition: width 0.3s;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .scrolled {
 	width: 100%;
 	animation: slideInFromLeft 0.3s;
+}
+.hamburger{
+	position: fixed;
+	top: 0;
+	right: 0;
+	padding: 1em;
+	z-index: 2;
+}
+.navListMobile{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	padding: 0;
+	margin: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background: rgb(0, 0, 120);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	color: white;
+	text-decoration: none;
+	list-style: none;
+	transform: translateX(-100%);
+	transition: all 0.3s;
+}
+.navListMobile li{
+	padding: 2em 1em;
+	font-size: 1.4rem;
+}
+.navListMobile li a{
+	color: white;
+	text-decoration: none;
+}
+.open{
+	transform: translateX(0);
 }
 @keyframes slideInFromLeft {
 	0% {
@@ -50,5 +90,14 @@
 	}
 	100% {
 		width: 100%;
+	}
+}
+
+@media(min-width:768px){
+	.desktopNav{
+		display: block;
+	}
+	.mobileNav{
+		display: none;
 	}
 }

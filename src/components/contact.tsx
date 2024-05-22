@@ -1,6 +1,7 @@
 import classes from "./contact.module.css";
 import { useState, ChangeEvent, FormEvent } from "react";
 import ContactModal from "./contactModal";
+import emailjs from "@emailjs/browser";
 interface FormData {
 	name: string;
 	email: string;
@@ -13,9 +14,7 @@ function Contact() {
 		message: "",
 	});
 	const [showModal, setShowModal] = useState(false)
-	const [canCloseModal, setCanCloseModal] = useState(false)
-	const [title,setTitle] = useState('')
-	const [paragraph,setParagraph] = useState('')
+	const [modalText, setModalText] = useState({ title: "Wysyłanie...", paragraph: "Proszę czekać" });
 	const handleChange = (
 		e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => {
@@ -29,37 +28,53 @@ function Contact() {
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 		setShowModal(true)
-		setTitle('Wysyłanie')
-		setParagraph('Proszę czekać')
-		setCanCloseModal(false)
-         try{
-			const response = await fetch(`${process.env.REACT_APP_EMAIL_STRING}/baszyn@op.pl`, {
-				method:"POST",
-				headers:{
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify(formData)
-			})
-			if (response.ok) {
-				setCanCloseModal(true)
-				setTitle('Wysłano!')
-				setParagraph("Twoja wiadomość została wysłana!")
-				setFormData({
-					name:"",
-					email:"",
-					message:""
-				})
-			} else {
-				setCanCloseModal(true)
-				setTitle('Błąd!')
-				setParagraph('Nie udało się wysłać wiadomości, spróbuj ponownie później lub napisz na baszyn@op.pl')
+		emailjs.init(`${process.env.REACT_APP_EMAIL_KEY}`);
+		const templateParams = {
+			from_name: formData.name,
+			from_email: formData.email,
+			message: formData.message,
+		};
+		if (
+			formData.name === "" ||
+			formData.email === "" ||
+			!formData.email.includes("@") ||
+			formData.message === ""
+		) {
+			setModalText({ title: "Błąd!", paragraph: "Niepoprawne dane!" });
+			setShowModal(true);
+		} else {
+			try {
+				emailjs
+					.send(
+						`${process.env.REACT_APP_SERVICE_KEY}`,
+						`${process.env.REACT_APP_TEMPLATE_KEY}`,
+						templateParams
+					)
+					.then(() => {
+						setModalText({
+							title: "Udało się!",
+							paragraph: "Email został wysłany! odpowiem na niego wkrótce",
+						});
+						setShowModal(true);
+						setFormData({ name: "", email: "", message: "" });
+					})
+					.catch(() => {
+						setModalText({
+							title: "Oj...",
+							paragraph: "Coś poszło nie tak, spróbuj ponownie później!",
+						});
+						setShowModal(true);
+						setFormData({ name: "", email: "", message: "" });
+					});
+			} catch (error) {
+				setModalText({
+					title: "Oj...",
+					paragraph: "Coś poszło nie tak, spróbuj ponownie później!",
+				});
+				setShowModal(false);
+				setFormData({ name: "", email: "", message: "" });
 			}
-		 }
-		 catch(error){
-			setCanCloseModal(true)
-				setTitle('Błąd!')
-				setParagraph('Nie udało się wysłać wiadomości, spróbuj ponownie później lub napisz na baszyn@op.pl')
-		 }
+		}
       };
 	  function closeModalHandler(){
 		setShowModal(false)
@@ -130,14 +145,14 @@ function Contact() {
 									</div>
 								</div>
 								<div className={classes.imgBox}>
-									<iframe src='https://lottie.host/embed/6921605c-3a6f-49fb-9680-492533eeb2a6/7rEP9bW41w.json'></iframe>
+									<iframe title="truck" src='https://lottie.host/embed/6921605c-3a6f-49fb-9680-492533eeb2a6/7rEP9bW41w.json'></iframe>
 								</div>
 							</div>
 						</form>
 					</div>
 				</div>
 			</div>
-			{showModal && <ContactModal canCloseModal={canCloseModal} onModalClose={closeModalHandler} title={title} paragraph={paragraph} />}
+			{showModal && <ContactModal onModalClose={closeModalHandler} title={modalText.title} paragraph={modalText.paragraph} />}
 		</section>
 	);
 }

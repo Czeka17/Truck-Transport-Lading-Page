@@ -3,13 +3,12 @@ interface ContactModalProps{
     onModalClose: () => void,
     title:string;
     paragraph:string;
-    canCloseModal: boolean;
 }
-function ContactModal({onModalClose,title,paragraph,canCloseModal}:ContactModalProps){
+function ContactModal({onModalClose,title,paragraph}:ContactModalProps){
     function CloseModal(){
-        if(canCloseModal){
+ 
             onModalClose()
-        }
+     
     }
     return <div className={classes.modal}>
         <div className={classes.backdrop} onClick={CloseModal}>
@@ -23,7 +22,7 @@ function ContactModal({onModalClose,title,paragraph,canCloseModal}:ContactModalP
             <p>
              {paragraph}
             </p>
-            <button className={`${classes.okBtn} ${!canCloseModal && classes.btnDisabled}`} onClick={CloseModal}>
+            <button className={classes.okBtn} onClick={CloseModal}>
                 Ok
             </button>
         </div>

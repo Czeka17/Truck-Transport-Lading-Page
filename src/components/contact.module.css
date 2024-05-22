@@ -47,7 +47,7 @@ form {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	flex-direction: row;
+	flex-direction: column;
 }
 .form {
 	display: flex;
@@ -132,12 +132,12 @@ form {
 	background: rgb(0, 0, 90);
 }
 .imgBox {
+	order: -1;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 40%;
+	width: 100%;
 	height: 100%;
-	display: none;
 }
 .imgBox iframe {
 	border: none;
@@ -155,7 +155,11 @@ form {
 	
 }
 @media(min-width:768px){
+	.formBox{
+		flex-direction: row;
+	}
 	.imgBox{
-		display: block;
+		width: 40%;
+		order:1;
 	}
 }
